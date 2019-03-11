@@ -1,0 +1,27 @@
+{
+  "name": "romlig-api",
+  "version": "1.0.0",
+  "description": "Statistikk på geografiske datasett.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node_modules/.bin/nodemon -e js",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [
+    "spatial",
+    "search"
+  ],
+  "repository": "https://github.com/Artsdatabanken/romlig-api",
+  "author": "Bjorn Reppen <bjreppen@gmail.com> (https://github.com/bjornreppen)",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^5.15.1",
+    "express": "^4.16.4",
+    "log-less-fancy": "^1.4.0",
+    "minimist": "^1.2.0",
+    "pngjs": "^3.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
