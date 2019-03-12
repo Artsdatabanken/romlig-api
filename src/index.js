@@ -13,7 +13,7 @@ if (argv._.length === 1) {
   console.log("Usage: node index.js [options]");
   console.log("");
   console.log("Options:");
-  console.log("   -p PORT --port PORT  Set the HTTP port [9876]");
+  console.log("   -p PORT --port PORT  Set the HTTP port [9875]");
   console.log(
     "   --dataPath           Directory containing the search index [./data/]"
   );
@@ -43,7 +43,7 @@ app.use(function(req, res, next) {
 const config = { dataPath: path.resolve(argv.path || "./data/") };
 routes(app, config);
 
-const port = argv.port || 9876;
+const port = argv.port || 9875;
 app.listen(port, () => {
   log.info("Server listening on port " + port);
 });
