@@ -6,6 +6,7 @@ module.exports = function(app, config) {
     res.setHeader("Content-Type", "application/json");
     const punkter = req.query.punkter;
     const raster = req.query.raster;
+    debugger;
     if (!punkter || !raster) return usage(req, res, examples.grid1d);
     const punkterPath = path.join(
       config.dataPath,
@@ -20,6 +21,7 @@ module.exports = function(app, config) {
     });
   });
   app.get("*?", (req, res) => {
+    debugger;
     return usage(req, res);
   });
 };
@@ -31,5 +33,6 @@ function usage(req, res, exampleUrl) {
 }
 
 const examples = {
-  grid1d: "/statistikk/grid1d?punkter=xxx&raster=yyy"
+  grid1d:
+    "https://romlig.artsdatabanken.no/statistikk/grid1d?punkter=Biota/Plantae/Marchantiophyta/Jungermanniopsida&raster=Natur_i_Norge/Landskap/Landskapsgradient/Kystavstand"
 };

@@ -3,9 +3,13 @@ const geojson2xyz = require("./geojson2xyz");
 const png = require("./png");
 
 async function statistikk(punktFn, rasterFn) {
-  const xyz = readGeojson(punktFn);
-  const stat = await png(rasterFn, xyz);
-  return stat;
+  try {
+    const xyz = readGeojson(punktFn);
+    const stat = await png(rasterFn, xyz);
+    return stat;
+  } catch (e) {
+    return e;
+  }
 }
 
 function readGeojson(fn) {

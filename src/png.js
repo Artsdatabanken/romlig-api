@@ -1,6 +1,7 @@
 const PNG = require("pngjs").PNG;
 const fs = require("fs");
 const fsPromises = fs.promises;
+const gaussian = require("./gaussian");
 
 const metersPerPixel = 1000;
 const bounds = {
@@ -22,7 +23,7 @@ async function calc(fn, xyz) {
     const sample = png.data[idx];
     r[sample]++;
   }
-  return r;
+  return gaussian(r);
 }
 
 module.exports = calc;
