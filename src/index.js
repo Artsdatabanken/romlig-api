@@ -13,7 +13,7 @@ if (argv._.length === 1) {
   console.log("Usage: node index.js [options]");
   console.log("");
   console.log("Options:");
-  console.log("   -p PORT --port PORT  Set the HTTP port [9875]");
+  console.log("   -p PORT --port PORT  Set the HTTP port  [9875]");
   console.log(
     "   --dataPath           Directory containing the search index [./data/]"
   );
