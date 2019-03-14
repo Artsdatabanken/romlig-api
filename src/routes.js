@@ -6,7 +6,6 @@ module.exports = function(app, config) {
     res.setHeader("Content-Type", "application/json");
     const punkter = req.query.punkter;
     const raster = req.query.raster;
-    debugger;
     if (!punkter || !raster) return usage(req, res, examples.grid1d);
     const punkterPath = path.join(
       config.dataPath,
@@ -17,11 +16,10 @@ module.exports = function(app, config) {
       path.join(raster, "grid.32633.png")
     );
     grid1d(punkterPath, rasterPath).then(stat => {
-      res.send({ args: { punkter: punkter, raster: raster }, fordeling: stat });
+      res.send(stat);
     });
   });
   app.get("*?", (req, res) => {
-    debugger;
     return usage(req, res);
   });
 };
