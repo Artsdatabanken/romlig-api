@@ -6,7 +6,7 @@ async function statistikk(punktFn, rasterFn) {
   try {
     const xyz = readGeojson(punktFn);
     const stat = await png(rasterFn, xyz);
-    return { args: { punkter: punktFn, raster: rasterFn }, fordeling: stat };
+    return { args: { punkter: punktFn, raster: rasterFn }, ...stat };
   } catch (e) {
     return { feil: { melding: e.message, ...e } };
   }

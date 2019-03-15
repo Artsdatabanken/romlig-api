@@ -15,6 +15,7 @@ async function calc(fn, xyz) {
   const data = await fsPromises.readFile(fn);
   var png = PNG.sync.read(data);
   const r = Array(256).fill(0);
+  const grad = Array(256).fill(0);
 
   for (const co of xyz) {
     const x = parseInt((co[0] - bounds.left) / metersPerPixel);
@@ -23,7 +24,15 @@ async function calc(fn, xyz) {
     const sample = png.data[idx];
     r[sample]++;
   }
-  return gaussian(r);
+
+  for (let x = 0; x < png.width; x++)
+    for (let y = 0; y < png.height; y++) {
+      var idx = (png.width * y + x) << 2;
+      const sample = png.data[idx];
+      grad[sample]++;
+    }
+
+  return { fordeling: gaussian(r), rå: r, grad: grad };
 }
 
 module.exports = calc;
