@@ -32,7 +32,7 @@ async function calc(fn, xyz) {
       grad[sample]++;
     }
 
-  return { fordeling: gaussian(r), rå: r, grad: grad };
+  return { fordeling: gaussian(r), rå: r, grad: gaussian(grad) };
 }
 
 module.exports = calc;
