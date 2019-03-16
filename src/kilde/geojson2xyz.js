@@ -1,3 +1,4 @@
+// Fryktelig inneffektivt, men brukes under prototyping for å teste konsepter
 function geojson2xyz(geojson, gridSizeMeters = 250) {
   const r = [];
   geojson.features.forEach(f => {
