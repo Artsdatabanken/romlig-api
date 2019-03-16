@@ -1,5 +1,4 @@
 const fs = require("fs");
-const geojson2xyz = require("./geojson2xyz");
 const fordeling2d = require("./fordeling2d");
 const fordeling1d = require("./fordeling1d");
 const raster = require("./kilde/raster");

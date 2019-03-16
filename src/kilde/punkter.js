@@ -1,8 +1,9 @@
 const fs = require("fs");
 const fsPromises = fs.promises;
+const geojson2xyz = require("./geojson2xyz");
 
-async function load(fn) {
-  const raw = await fs.readFileSync(fn);
+function load(fn) {
+  const raw = fs.readFileSync(fn);
   const geojson = JSON.parse(JSON.parse(raw));
   const xyz = geojson2xyz(geojson);
   return xyz;
