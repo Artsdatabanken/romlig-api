@@ -11,7 +11,7 @@ async function stat1d(rasterFn) {
     const stat = fordeling1d(png);
     return gaussianBlur(stat);
   } catch (e) {
-    return { feil: { melding: e.message, ...e } };
+    return { feil: { melding: e.message, stack: e.stack } };
   }
 }
 
@@ -22,7 +22,7 @@ async function stat2d(punktFn, rasterFn) {
     const stat = await fordeling2d(png, xyz);
     return { args: { punkter: punktFn, raster: rasterFn }, ...stat };
   } catch (e) {
-    return { feil: { melding: e.message, ...e } };
+    return { feil: { melding: e.message, stack: e.stack } };
   }
 }
 

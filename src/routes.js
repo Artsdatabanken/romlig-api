@@ -7,14 +7,8 @@ module.exports = function(app, config) {
     const punkter = req.query.punkter;
     const raster = req.query.raster;
     if (!punkter || !raster) return usage(req, res, examples.grid1d);
-    const punkterPath = path.join(
-      config.dataPath,
-      path.join(punkter, "observasjoner.32633.geojson")
-    );
-    const rasterPath = path.join(
-      config.dataPath,
-      path.join(raster, "grid.32633.png")
-    );
+    const punkterPath = path.join(config.dataPath, punkter);
+    const rasterPath = path.join(config.dataPath, raster);
     api.stat2d(punkterPath, rasterPath).then(stat => {
       res.send(stat);
     });
@@ -22,10 +16,7 @@ module.exports = function(app, config) {
   app.get("*", (req, res) => {
     res.setHeader("Content-Type", "application/json");
     const url = req.path;
-    const rasterPath = path.join(
-      config.dataPath,
-      path.join(url, "grid.32633.png")
-    );
+    const rasterPath = path.join(config.dataPath, url);
     api.stat1d(rasterPath).then(stat => {
       res.send(stat);
     });
