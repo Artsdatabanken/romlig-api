@@ -1,5 +1,5 @@
 const path = require("path");
-const grid1d = require("./grid1d");
+const api = require("./api");
 
 module.exports = function(app, config) {
   app.get("/statistikk/grid1d", (req, res) => {
@@ -15,7 +15,18 @@ module.exports = function(app, config) {
       config.dataPath,
       path.join(raster, "grid.32633.png")
     );
-    grid1d(punkterPath, rasterPath).then(stat => {
+    api.stat2d(punkterPath, rasterPath).then(stat => {
+      res.send(stat);
+    });
+  });
+  app.get("*", (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    const url = req.path;
+    const rasterPath = path.join(
+      config.dataPath,
+      path.join(url, "grid.32633.png")
+    );
+    api.stat1d(rasterPath).then(stat => {
       res.send(stat);
     });
   });
