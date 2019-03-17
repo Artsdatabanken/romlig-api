@@ -9,7 +9,7 @@ async function stat1d(rasterFn) {
   try {
     const png = await raster.load(rasterFn);
     const stat = fordeling1d(png);
-    return gaussianBlur(stat);
+    return { grad: gaussianBlur(stat) };
   } catch (e) {
     return { feil: { melding: e.message, stack: e.stack } };
   }
