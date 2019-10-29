@@ -4,6 +4,7 @@ const log = require("log-less-fancy")();
 const minimist = require("minimist");
 const routes = require("./routes");
 const pjson = require("../package.json");
+const swagger = require("./swagger");
 
 var argv = minimist(process.argv.slice(2), {
   alias: { p: "port" },
@@ -42,6 +43,7 @@ app.use(function(req, res, next) {
 
 const config = { dataPath: path.resolve(argv.path || "./data/") };
 routes(app, config);
+swagger.init(app);
 
 const port = argv.port || 9875;
 app.listen(port, () => {

@@ -2,7 +2,7 @@ const path = require("path");
 const api = require("./api");
 
 module.exports = function(app, config) {
-  app.get("/statistikk/grid1d", (req, res) => {
+  app.get("/v1/dual", (req, res) => {
     res.setHeader("Content-Type", "application/json");
     const punkter = decodeURI(req.query.punkter);
     const raster = decodeURI(req.query.raster);
@@ -13,24 +13,15 @@ module.exports = function(app, config) {
       res.send(stat);
     });
   });
-  app.get("*", (req, res) => {
+  app.get("v1/single", (req, res) => {
     res.setHeader("Content-Type", "application/json");
-    const url = decodeURI(req.path);
+    const url = req.query.raster;
     const rasterPath = path.join(config.dataPath, url);
     api.stat1d(rasterPath).then(stat => {
       res.send(stat);
     });
   });
-  app.get("*?", (req, res) => {
-    return usage(req, res);
-  });
 };
-
-function usage(req, res, exampleUrl) {
-  res.send({
-    example: exampleUrl ? "https://" + req.headers.host + exampleUrl : examples
-  });
-}
 
 const examples = {
   grid1d:

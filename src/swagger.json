@@ -1,0 +1,83 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Statistikk på geografiske datasett\n[https://romlig.artsdatabanken.no/](https://romlig.artsdatabanken.no/) or on \n[https://artsdatabanken.slack.com/, #åpnedata](https://artsdatabanken.slack.com/).\n",
+    "version": "1.0.0",
+    "title": "Romlig API",
+    "contact": {
+      "email": "bjorn.reppen@artsdatabanken.no"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "basePath": "/v1",
+  "schemes": ["https"],
+  "paths": {
+    "/single": {
+      "get": {
+        "summary": "Statistikk som viser distribusjonen av verdiene innenfor datasettet ",
+        "description": "",
+        "operationId": "getDual",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "raster",
+            "in": "query",
+            "description": "Layer path containing the raster map files. Go to https://data.artsdatabanken.no or https://nin.artsdatabanken.no - navigate to a layer, copy the relative path. Example: Natur_i_Norge/Natursystem/Beskrivelsessystem/Terrengformvariabler/Terrenghelning",
+            "required": true,
+            "default": "Natur_i_Norge/Landskap/Landskapsgradient/Kystavstand",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/dual": {
+      "get": {
+        "summary": "Statistikk som viser distribusjonen av verdiene innenfor datasettet ",
+        "description": "",
+        "operationId": "getDual",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "punkter",
+            "in": "query",
+            "description": "Layer path containing the raster map files. Go to https://data.artsdatabanken.no or https://nin.artsdatabanken.no - navigate to a layer, copy the relative path. Example: Biota/Plantae",
+            "required": true,
+            "default": "Biota/Plantae/Marchantiophyta/Jungermanniopsida",
+            "type": "string"
+          },
+          {
+            "name": "raster",
+            "in": "query",
+            "description": "Layer path containing the raster map files. Go to https://data.artsdatabanken.no or https://nin.artsdatabanken.no - navigate to a layer, copy the relative path. Example: Natur_i_Norge/Natursystem/Beskrivelsessystem/Terrengformvariabler/Terrenghelning",
+            "required": true,
+            "default": "Natur_i_Norge/Landskap/Landskapsgradient/Kystavstand",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about romlig-api on GitHub",
+    "url": "https://github.com/Artsdatabanken/romlig-api"
+  }
+}
