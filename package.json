@@ -15,7 +15,7 @@
   "author": "Bjorn Reppen <bjreppen@gmail.com> (https://github.com/bjornreppen)",
   "license": "MIT",
   "dependencies": {
-    "eslint": "^6.6.0",
+    "eslint": "^6.7.1",
     "express": "^4.17.1",
     "log-less-fancy": "^1.4.0",
     "minimist": "^1.2.0",
@@ -23,6 +23,6 @@
     "swagger-ui-express": "^4.1.2"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "nodemon": "^2.0.1"
   }
 }
